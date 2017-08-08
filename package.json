@@ -1,0 +1,14 @@
+{
+  "main": "src/main.js",
+  "name": "ec-sass-debug",
+  "version": "0.0.1",
+  "description": "Project to demonstrate SASS issues with electron-compile",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "start": "electron ."
+  },
+  "dependencies": {
+    "electron-prebuilt-compile": "^1.6.11"
+  }
+}

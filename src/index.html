@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+
+    <title>Hello World!</title>
+
+    <link rel="stylesheet" href="style/index.scss">
+    <script type="text/javascript">
+        function brokenReload() {
+            location.reload();
+        }
+        function workingReload() {
+            let fs = require("fs");
+            let indexSass = __dirname + "/style/index.scss";
+
+            fs.readFile(indexSass, 'utf8', function(err, data) {
+                if (err) {
+                    return console.log(err);
+                }
+
+                let randomString = Math.random().toString(36).substring(2, 15);
+                let result = data.replace(/ randomness:.*/, " randomness: " + randomString);
+
+                fs.writeFile(indexSass, result, 'utf8', function(err) {
+                    if (err) {
+                        return console.log(err);
+                    };
+                });
+            });
+            location.reload();
+        }
+    </script>
+</head>
+<body>
+    <div id="root">
+
+        <p class="border-test">
+          This paragraph should be in a box.
+        </p>
+
+        <button id="reload" onclick="location.reload()">Reload (Broken)</button>
+        <button id="touch-stylesheet" onclick="workingReload()">Reload (Working)</button>
+
+    </div>
+</body>
+</html>
